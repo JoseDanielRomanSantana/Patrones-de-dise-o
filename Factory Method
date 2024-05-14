@@ -1,0 +1,68 @@
+# Tutorial Markdown - Patrones de diseño
+
+# Patrones de Diseño
+
+### **¿Qué es un patrón de diseño?**
+
+Un patrón de diseño es una solución general reutilizable a un problema común que ocurre en el diseño de software. Los patrones de diseño no son un diseño final que se puede transformar directamente en código, sino más bien una descripción o plantilla de cómo resolver un problema que se puede usar en diferentes situaciones.
+
+![Ejemplo](./img/ejemplo.png)
+
+## **¿En qué consiste?**
+
+Los patrones de diseño consisten en identificar problemas comunes en el desarrollo de software y proporcionar soluciones basadas en las mejores prácticas probadas y comprobadas. Estos patrones describen problemas, soluciones y consecuencias de usar un patrón particular. Los patrones de diseño se clasifican generalmente en tres categorías principales:
+
+1. **Patrones creacionales**: se ocupan de los mecanismos de creación de objetos, tratando de crear objetos de una manera adecuada a la situación.
+2. **Patrones estructurales**: se ocupan de la composición de clases o de objetos, permitiendo crear nuevas funcionalidades.
+3. **Patrones de comportamiento**: se ocupan del algoritmo y la asignación de responsabilidades entre los objetos, centrándose en cómo los objetos interactúan y se comunican entre sí.
+
+## **¿Por qué aprender sobre patrones de diseño?**
+
+Aprender sobre patrones de diseño es importante por varias razones:
+
+1. **Mejora la comunicación**: los patrones de diseño proporcionan un vocabulario común para que los desarrolladores puedan comunicarse más eficazmente.
+2. **Reutilización de código**: los patrones de diseño proporcionan soluciones probadas y comprobadas que se pueden reutilizar en diferentes situaciones, lo que ahorra tiempo y esfuerzo.
+3. **Flexibilidad y mantenibilidad**: los patrones de diseño ayudan a crear un diseño más flexible y sostenible, lo que facilita la modificación y extensión del código en el futuro.
+4. **Mejora la calidad del código**: al aplicar patrones de diseño, se mejora la calidad del código al seguir las mejores prácticas y principios de diseño.
+5. **Aprendizaje y crecimiento**: estudiar patrones de diseño ayuda a los desarrolladores a aprender de las experiencias de otros y a crecer como profesionales.
+
+# Patrón de diseño Factory Method.
+
+El patrón de diseño Factory Method en PHP es una solución efectiva y fundamental en el desarrollo de aplicaciones y programas en este lenguaje. Este patrón permite crear objetos sin la necesidad de especificar la clase exacta del objeto que se desea crear, lo que brinda flexibilidad y escalabilidad al programa. En resumen, el Factory Method en PHP es una herramienta clave que permite delegar la creación de objetos a sus subclases, creando una jerarquía de clases encargadas de la creación de objetos de manera flexible y eficaz.
+
+```php
+<?php
+
+// Interfaz para la creación de productos
+interface ProductFactory {
+    public function createProduct();
+}
+
+// Clase concreta que implementa la interfaz ProductFactory
+class ConcreteProductFactory implements ProductFactory {
+    public function createProduct() {
+        return new ConcreteProduct();
+    }
+}
+
+// Interfaz para los productos
+interface Product {
+    public function getName();
+}
+
+// Clase concreta que implementa la interfaz Product
+class ConcreteProduct implements Product {
+    public function getName() {
+        return "Producto concreto";
+    }
+}
+
+// Uso del Factory Method
+$factory = new ConcreteProductFactory();
+$product = $factory->createProduct();
+echo $product->getName();
+
+?>
+```
+
+En este ejemplo, se define una interfaz Factory Method que declara el método createProduct, luego se implementa esta interfaz en la clase ConcreteProductFactory, que se encarga de crear instancias de ConcreteProduct. La clase ConcreteProduct implementa la interfaz Product y define el método getName que devuelve el nombre del producto. Al final, se crea una instancia de ConcreteProduct utilizando el Factory Method a través de ConcreteProductFactory y se muestra el nombre del producto. Este ejemplo muestra cómo el patrón Factory Method en PHP permite la creación de objetos.
